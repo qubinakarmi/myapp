@@ -90,4 +90,16 @@ public function logout(Request $request)
 
 
 
+
+
+function logoff(Request $request)
+{
+    $request->validate([
+
+
+    'email'=>'required',
+    ]);
+}
+
+
 }
