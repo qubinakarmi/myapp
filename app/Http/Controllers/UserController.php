@@ -17,12 +17,16 @@ function add(Request $request){
     $users->name=$request->name;
     $users->email=$request->email;
     $users->city=$request->city;
-    $users->save();
+       if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('images'), $imageName);
+        $users->image_path = 'images/' . $imageName;
+    }
 
+ 
 
-
-
-     if($users){
+     if( $users->save())
+        {
 
          return redirect('user-list');
      }
@@ -68,6 +72,12 @@ $users=Register::find($id);
 $users->name=$request->name;
 $users->email=$request->email;
 $users->city=$request->city;
+
+ if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();  
+        $request->image->move(public_path('images'), $imageName);
+        $users->image_path = 'images/' . $imageName;
+    }
 
 if($users->save()){
 

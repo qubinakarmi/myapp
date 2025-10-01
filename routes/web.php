@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\UserController;
 use  App\Http\Controllers\MailController;
+use  App\Http\Controllers\LoginController;
 use Illuminate\Support\Str;
 
 
@@ -11,8 +12,9 @@ Route::get('/', function () {
 });
 
 Route::view('add','add');
-Route::view('home','home');
-
+Route::get('home', function () {
+    return view('home');
+})->middleware('auth.basic');
 
 
 
@@ -51,3 +53,18 @@ Route::get('/test', function () {
 // Route-Model Binding
 
 Route::get('bind/{key:name}',[UserController::class,'bind']);
+
+Route::view('test','test');
+
+
+// Route Register
+
+Route::view('register','register');
+Route::post('register',[LoginController::class,'register']); 
+
+
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+

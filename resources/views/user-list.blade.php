@@ -42,7 +42,8 @@
     <td>name</td>
     <td>email</td>
     <td>city</td>
-    <td>operation</td>
+    <td>image</td>
+   <td>operation</td>
  
 </tr>
 
@@ -52,8 +53,10 @@
     <td class="table-info">{{$user->name}}</td>
     <td class="table-warning">{{$user->email}}</td>
     <td class="table-info">{{$user->city}}</td>
+    <td><img src="{{ asset($user->image_path) }}" alt="User Image" width="150">
+   </td>
     <td class="table-warning"><a class="btn btn-outline-danger" href="delete/{{$user->id}}"> delete</a>
-    <a class="btn btn-outline-warning"href="edit/{{$user->id}}"> edit</a>
+ 
 </td>
 
 </tr>

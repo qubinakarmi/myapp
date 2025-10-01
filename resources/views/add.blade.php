@@ -2,13 +2,14 @@
     Add user
 </h1>
 
-<form action="add" method="post">
+<form action="add" method="post" enctype="multipart/form-data">
 
-@csrf 
+ @csrf 
 
 <input type="text" name="name" placeholder="Enter your name"> <br><br>
 <input type="text" name="email" placeholder="Enter your email"> <br><br>
 <input type="text" name="city" placeholder="Enter your city"> <br><br>
+<input type="file" name="image" class="form-control">
 
 <button>Add User</button>
 
