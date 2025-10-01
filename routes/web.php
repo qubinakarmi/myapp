@@ -12,6 +12,7 @@ Route::get('/', function () {
 });
 
 Route::view('add','add');
+Route::view('about','about');
 Route::get('home', function () {
     return view('home');
 })->middleware('auth.basic');
